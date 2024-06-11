@@ -27,10 +27,14 @@ function displayForecast(response) {
         let dateDisplay = document.createElement('p')
         dateDisplay.innerHTML = `Date: ${date}`
 
+        let conditionDisplay = document.createElement('img')
+        conditionDisplay.setAttribute('src', `https:${day.day.condition.icon}`)
+
         let tempDisplay = document.createElement('p')
         tempDisplay.innerHTML = `Average Temperature: ${avgTemp}°F`
 
         dayDisplay.appendChild(dateDisplay)
+        dayDisplay.appendChild(conditionDisplay)
         dayDisplay.appendChild(tempDisplay)
         display.appendChild(dayDisplay)
     })
