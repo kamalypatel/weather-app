@@ -8,13 +8,32 @@ function getForecast (location) {
     })
     .then(function(response) {
         console.log(response)
+        displayForecast(response)
     })
-    displayForecast()
     }
 }
 
-function displayForecast() {
-    
+function displayForecast(response) {
+    let display = document.querySelector('.display-forecast')
+    display.innerHTML = ''
+
+    response.forecast.forecastday.forEach(function(day) {
+        let dayDisplay = document.createElement('div')
+        dayDisplay.classList.add('forecast-day')
+
+        let date = new Date(day.date_epoch *1000).toLocaleDateString()
+        let avgTemp = day.day.avgtemp_f
+
+        let dateDisplay = document.createElement('p')
+        dateDisplay.innerHTML = `Date: ${date}`
+
+        let tempDisplay = document.createElement('p')
+        tempDisplay.innerHTML = `Average Temperature: ${avgTemp}°F`
+
+        dayDisplay.appendChild(dateDisplay)
+        dayDisplay.appendChild(tempDisplay)
+        display.appendChild(dayDisplay)
+    })
 }
 
 let locationInput = document.querySelector('.location-input')
