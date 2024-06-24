@@ -39,6 +39,9 @@ function displayForecast(response) {
     currentCondition.innerHTML = `${response.current.condition.text}`
     currentCondition.classList.add('current-condition')
 
+    let conditionCurrentDisplay = document.createElement('img')
+        conditionCurrentDisplay.setAttribute('src', `https:${response.current.condition.icon}`)
+        conditionCurrentDisplay.classList.add('currentConditionIcon')
 
     let currentTemp = document.createElement('p')
     currentTemp.innerHTML = `${response.current.temp_f}°`
@@ -46,6 +49,7 @@ function displayForecast(response) {
     
     currentDisplay.appendChild(city)
     currentDisplay.appendChild(currentCondition)
+    currentDisplay.appendChild(conditionCurrentDisplay)
     currentDisplay.appendChild(currentTemp)
 
 
@@ -62,7 +66,7 @@ function displayForecast(response) {
 
         let dateDisplay = document.createElement('p')
         dateDisplay.innerHTML = `${date}`
-        dateDisplay.classList.add('date)')
+        dateDisplay.classList.add('forcast-date)')
 
         let conditionDisplay = document.createElement('img')
         conditionDisplay.setAttribute('src', `https:${day.day.condition.icon}`)
