@@ -26,8 +26,8 @@ function displayForecast(response) {
     currentCondition.classList.add('current-condition')
 
     let conditionCurrentDisplay = document.createElement('img')
-        conditionCurrentDisplay.setAttribute('src', `https:${response.current.condition.icon}`)
-        conditionCurrentDisplay.classList.add('currentConditionIcon')
+    conditionCurrentDisplay.setAttribute('src', `https:${response.current.condition.icon}`)
+    conditionCurrentDisplay.classList.add('currentConditionIcon')
 
     let currentTemp = document.createElement('p')
     currentTemp.innerHTML = `${response.current.temp_f}°`
@@ -47,12 +47,12 @@ function displayForecast(response) {
         let dayDisplay = document.createElement('div')
         dayDisplay.classList.add('forecast-day')
 
-        let date = new Date(day.date_epoch *1000).toLocaleDateString()
+        let date = new Date(day.date_epoch *1000).getDate()
         let avgTemp = day.day.avgtemp_f
 
         let dateDisplay = document.createElement('p')
         dateDisplay.innerHTML = `${date}`
-        dateDisplay.classList.add('forcast-date)')
+        dateDisplay.classList.add('forecast-date)')
 
         let conditionDisplay = document.createElement('img')
         conditionDisplay.setAttribute('src', `https:${day.day.condition.icon}`)
