@@ -1,17 +1,3 @@
-/* function getCurrentForecast (location) {
-    if (location == '') {
-        console.log('No location entered')
-    } else {
-        fetch(`https://api.weatherapi.com/v1/current.json?key=1b6e3493db6147c3bc5155935242605&q=${location}`, {mode: 'cors'})
-    .then(function(response) {
-       return response.json()
-    })
-    .then(function(response) {
-        console.log(response)
-    })
-    }
-} */
-
 function getForecast (location) {
     if (location == '') {
         console.log('No location entered')
@@ -86,6 +72,5 @@ function displayForecast(response) {
 let locationInput = document.querySelector('.location-input')
 const button = document.querySelector('.location-button')
 button.addEventListener('click', function() {
-    /* getCurrentForecast(locationInput.value) */
     getForecast(locationInput.value)
 })
