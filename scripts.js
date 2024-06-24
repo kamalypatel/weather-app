@@ -28,9 +28,31 @@ function getForecast (location) {
 }
 
 function displayForecast(response) {
+    let currentDisplay = document.querySelector('.current-weather')
+    currentDisplay.innerHTML = ''
+
+    let city = document.createElement('p')
+    city.innerHTML = `${response.location.name}`
+    city.classList.add('city-name')
+
+    let currentCondition = document.createElement('p')
+    currentCondition.innerHTML = `${response.current.condition.text}`
+    currentCondition.classList.add('current-condition')
+
+
+    let currentTemp = document.createElement('p')
+    currentTemp.innerHTML = `${response.current.temp_f}°`
+    currentTemp.classList.add('current-temp')
+    
+    currentDisplay.appendChild(city)
+    currentDisplay.appendChild(currentCondition)
+    currentDisplay.appendChild(currentTemp)
+
+
+
     let display = document.querySelector('.display-forecast')
     display.innerHTML = ''
-    
+
     response.forecast.forecastday.forEach(function(day) {
         let dayDisplay = document.createElement('div')
         dayDisplay.classList.add('forecast-day')
@@ -47,7 +69,7 @@ function displayForecast(response) {
         conditionDisplay.classList.add('condition')
 
         let tempDisplay = document.createElement('p')
-        tempDisplay.innerHTML = `${avgTemp}°F`
+        tempDisplay.innerHTML = `${avgTemp}°`
         tempDisplay.classList.add('temp')
 
         dayDisplay.appendChild(dateDisplay)
