@@ -1,3 +1,17 @@
+/* function getCurrentForecast (location) {
+    if (location == '') {
+        console.log('No location entered')
+    } else {
+        fetch(`https://api.weatherapi.com/v1/current.json?key=1b6e3493db6147c3bc5155935242605&q=${location}`, {mode: 'cors'})
+    .then(function(response) {
+       return response.json()
+    })
+    .then(function(response) {
+        console.log(response)
+    })
+    }
+} */
+
 function getForecast (location) {
     if (location == '') {
         console.log('No location entered')
@@ -16,7 +30,7 @@ function getForecast (location) {
 function displayForecast(response) {
     let display = document.querySelector('.display-forecast')
     display.innerHTML = ''
-
+    
     response.forecast.forecastday.forEach(function(day) {
         let dayDisplay = document.createElement('div')
         dayDisplay.classList.add('forecast-day')
@@ -26,12 +40,15 @@ function displayForecast(response) {
 
         let dateDisplay = document.createElement('p')
         dateDisplay.innerHTML = `${date}`
+        dateDisplay.classList.add('date)')
 
         let conditionDisplay = document.createElement('img')
         conditionDisplay.setAttribute('src', `https:${day.day.condition.icon}`)
+        conditionDisplay.classList.add('condition')
 
         let tempDisplay = document.createElement('p')
         tempDisplay.innerHTML = `${avgTemp}°F`
+        tempDisplay.classList.add('temp')
 
         dayDisplay.appendChild(dateDisplay)
         dayDisplay.appendChild(conditionDisplay)
@@ -43,5 +60,6 @@ function displayForecast(response) {
 let locationInput = document.querySelector('.location-input')
 const button = document.querySelector('.location-button')
 button.addEventListener('click', function() {
+    /* getCurrentForecast(locationInput.value) */
     getForecast(locationInput.value)
 })
