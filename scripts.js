@@ -1,3 +1,19 @@
+function getForecastCoordinates() {
+    navigator.geolocation.getCurrentPosition((position) => {
+    let latitude = position.coords.latitude
+    let longitude = position.coords.longitude
+
+        fetch(`https://api.weatherapi.com/v1/forecast.json?key=1b6e3493db6147c3bc5155935242605&q=${latitude},${longitude}&days=7`, {mode: 'cors'})
+        .then(function(response) {
+        return response.json()
+        })
+        .then(function(response) {
+            console.log(response)
+            displayForecast(response)
+        })
+    })
+}
+
 function getForecast (location) {
     if (location == '') {
         console.log('No location entered')
@@ -74,3 +90,7 @@ const button = document.querySelector('.location-button')
 button.addEventListener('click', function() {
     getForecast(locationInput.value)
 })
+
+if ("geolocation" in navigator) {
+    getForecastCoordinates()
+}
